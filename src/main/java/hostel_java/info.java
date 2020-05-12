@@ -1,7 +1,7 @@
 
 package hostel_java;
 
-
+import hostel_java.pass;
 
 import java.sql.*;
 import javax.swing.*;
@@ -10,6 +10,7 @@ import javax.swing.*;
 public class info {
 
     public info() {
+        pass passkey = new passkey();
          JFrame frame3 = new JFrame("Clicked");
             frame3.setVisible(true);
             frame3.setSize(1300,1000);
@@ -22,7 +23,7 @@ public class info {
         ResultSet rs = null;
         try {
             String userName = "root";
-            String password = "anchan@123";
+            String password = passkey.password;
             String url = "jdbc:mysql://localhost:3306/hostel_mngmnt";
             Class.forName("com.mysql.cj.jdbc.Driver").getConstructor().newInstance();
             conn = DriverManager.getConnection(url, userName, password);
