@@ -10,7 +10,7 @@ import javax.swing.*;
 public class info {
 
     public info() {
-        pass passkey = new passkey();
+        pass passkey = new pass();
          JFrame frame3 = new JFrame("Clicked");
             frame3.setVisible(true);
             frame3.setSize(1300,1000);

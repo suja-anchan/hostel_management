@@ -15,20 +15,20 @@ public class First extends Frame {
 
   public First()
     {
-        setBackground(Color.BLACK);
-        setLayout(new FlowLayout());
-        
+
     }  
  
 
     public static void main(String[] args){
         new First();
         JFrame frame= new JFrame("Hostel Management System");
-       
+        
         frame.setSize(1300,1000);
+        frame.setBackground(Color.BLACK);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //        frame.getContentPane().setBackground(Color.BLACK);
         JPanel panel=new JPanel();
+        panel.setBackground(Color.black);
         panel.setLayout(null);
         frame.add(panel);
         JButton button=new JButton("GIRLS HOSTEL");
