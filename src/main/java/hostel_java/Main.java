@@ -5,6 +5,7 @@
  */
 package hostel_java;
 
+<<<<<<< HEAD
 import java.sql.*;
 
 import java.sql.Connection;
@@ -44,3 +45,19 @@ public class Main {
         }
     }
 }
+=======
+/**
+ *
+ * @author USER
+ */
+public class Main {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+    }
+    
+}
+>>>>>>> 73ca801cdea261293291b9bc0a5088a56adc0e9f
