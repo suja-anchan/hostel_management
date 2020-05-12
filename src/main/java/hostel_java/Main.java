@@ -1,36 +1,35 @@
-
-package Hostel_Mngmnt;
-
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package hostel_java;
 
 import java.sql.*;
-import javax.swing.*;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
-public class info {
+public class Main {
 
-    public info() {
-         JFrame frame3 = new JFrame("Clicked");
-            frame3.setVisible(true);
-            frame3.setSize(1300,1000);
-            JLabel label2 = new JLabel("Student info");
-            JPanel panel2=new JPanel();
-            frame3.add(panel2);
-            panel2.add(label2);
+    public static void main(String args[]) {
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
         try {
             String userName = "root";
             String password = "anchan@123";
-            String url = "jdbc:mysql://localhost:3306/hostel_mngmnt";
+            String url = "jdbc:mysql://localhost:3306/practise";
             Class.forName("com.mysql.cj.jdbc.Driver").getConstructor().newInstance();
             conn = DriverManager.getConnection(url, userName, password);
             System.out.println("Database connection established");
             stmt = conn.createStatement();
-            stmt.execute("select * from Girls_hostel");
-            
 
+//            stmt.execute("create table javacourse(roll integer primary key,name varchar(30),marks integer not null,grade varchar(10))");
+            stmt.execute("insert into javacourse values(2,'suja',89,'A')");
+            
         } catch (Exception e) {
             System.err.println(e);
         } finally {
@@ -44,6 +43,4 @@ public class info {
             }
         }
     }
-    } 
-    
-
+}

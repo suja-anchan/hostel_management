@@ -1,4 +1,4 @@
- package Hostel_Mngmnt;
+ package hostel_java;
 import javax.swing.*;
 
 

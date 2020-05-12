@@ -3,7 +3,7 @@ apply plugin: 'jacoco'
 apply plugin: 'application'
 
 
-mainClassName = 'Hostel_Mngmnt.Main'
+mainClassName = 'hostel_java.Main'
 
 repositories {
     jcenter()
