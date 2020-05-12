@@ -1,28 +1,63 @@
 package hostel_java;
 
+import java.sql.DriverManager;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.sql.*;
+import hostel_java.pass;
 
 public class Bground extends javax.swing.JFrame {
+    Statement stmt = null;
+    ResultSet rs = null;
+    PreparedStatement pstmt8=null;
+    PreparedStatement pstmt1=null;
+    PreparedStatement pstmt2=null;
+    PreparedStatement pstmt3=null;
+    PreparedStatement pstmt4=null;
+    PreparedStatement pstmt5=null;
+    PreparedStatement pstmt6=null;
+    PreparedStatement pstmt7=null;
 
     public Bground() {
+        pass passkey = new pass();
         initComponents();
         jTextField1.setText("Enter time");
-        jToggleButton1.setText("ON");
+        jToggleButton1.setText("Check");
         jTextField2.setText("Enter time");
-        jToggleButton2.setText("ON");
+        jToggleButton2.setText("Check");
         jTextField3.setText("Enter time");
-        jToggleButton3.setText("ON");
+        jToggleButton3.setText("Check");
         jTextField4.setText("Enter time");
-        jToggleButton4.setText("ON");
+        jToggleButton4.setText("Check");
         jTextField5.setText("Enter time");
-        jToggleButton5.setText("ON");
+        jToggleButton5.setText("Check");
         jTextField6.setText("Enter time");
-        jToggleButton6.setText("ON");
+        jToggleButton6.setText("Check");
         jTextField7.setText("Enter time");
-        jToggleButton7.setText("ON");
+        jToggleButton7.setText("Check");
         jTextField8.setText("Enter time");
-        jToggleButton8.setText("ON");
+        jToggleButton8.setText("Check");
+        Connection conn = null;
+        try {
+            String userName = "root";
+            String password = passkey.password;
+            String url = "jdbc:mysql://localhost:3306/test";
+            Class.forName("com.mysql.cj.jdbc.Driver").getConstructor().newInstance();
+            conn = DriverManager.getConnection(url, userName, password);
+            System.out.println("Database connection established");
+            stmt = conn.createStatement();
+            pstmt1 = conn.prepareStatement("update timer set wm1=? where wm1=?");
+            pstmt8 = conn.prepareStatement("update timer set wm8=? where wm8=?");
+            pstmt2 = conn.prepareStatement("update timer set wm2=? where wm2=?");
+            pstmt3 = conn.prepareStatement("update timer set wm3=? where wm3=?");
+            pstmt4 = conn.prepareStatement("update timer set wm4=? where wm4=?");
+            pstmt5 = conn.prepareStatement("update timer set wm5=? where wm5=?");
+            pstmt6 = conn.prepareStatement("update timer set wm6=? where wm6=?");
+            pstmt7 = conn.prepareStatement("update timer set wm7=? where wm7=?");
+            stmt.execute("use wm");
+        } catch (Exception e) {
+            System.err.println(e);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -317,10 +352,25 @@ public class Bground extends javax.swing.JFrame {
 
         String str;
         int n;
+        int tl;
         try {
+            stmt.execute("select wm1 from timer;");
+            rs = stmt.getResultSet();
+            rs.next();
+            tl=rs.getInt("wm1");
+            if(tl==0){
+            jToggleButton1.setText("ON");
             str = jTextField1.getText();
             n = Integer.parseInt(str);
             System.out.println(n);
+            pstmt1.setInt(1, n);
+            pstmt1.setInt(2, 0);
+            pstmt1.executeUpdate();
+            }
+            else{
+            n=tl;
+            System.out.println(n); 
+            }
             jToggleButton1.setText("Wait");
             jToggleButton1.setEnabled(false);
             Timer timer = new Timer();
@@ -331,6 +381,15 @@ public class Bground extends javax.swing.JFrame {
                     String st = Integer.toString(n - i) + " min left";
                     jTextField1.setText(st);
                     jTextField1.setEditable(false);
+                    try{
+                        pstmt1.setInt(1, n-i);
+                        pstmt1.setInt(2, n-i+1);
+                        pstmt1.executeUpdate();
+                        }
+                        catch(Exception e)
+                        {
+                            System.err.println(e);
+                        }
                     i++;
                     System.out.println("started");
                     if (i > n) {
@@ -338,8 +397,17 @@ public class Bground extends javax.swing.JFrame {
                         timer.cancel();
                         jTextField1.setText("Enter time");
                         jTextField1.setEditable(true);
-                        jToggleButton1.setText("ON");
+                        jToggleButton1.setText("Check");
                         jToggleButton1.setEnabled(true);
+                        try{
+                        pstmt1.setInt(1, 0);
+                        pstmt1.setInt(2, n);
+                        pstmt1.executeUpdate();
+                        }
+                        catch(Exception e)
+                        {
+                            System.err.println(e);
+                        }
                     }
                 }
             ;
@@ -364,10 +432,25 @@ public class Bground extends javax.swing.JFrame {
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         String str;
         int n;
+       int tl;
         try {
-
+            stmt.execute("select wm2 from timer;");
+            rs = stmt.getResultSet();
+            rs.next();
+            tl=rs.getInt("wm2");
+            if(tl==0){
+            jToggleButton2.setText("ON");
             str = jTextField2.getText();
             n = Integer.parseInt(str);
+            System.out.println(n);
+            pstmt2.setInt(1, n);
+            pstmt2.setInt(2, 0);
+            pstmt2.executeUpdate();
+            }
+            else{
+            n=tl;
+            System.out.println(n); 
+            }
             jToggleButton2.setText("Wait");
             jToggleButton2.setEnabled(false);
             Timer timer = new Timer();
@@ -379,14 +462,32 @@ public class Bground extends javax.swing.JFrame {
                     String st = Integer.toString(n - i) + " min left";
                     jTextField2.setText(st);
                     jTextField2.setEditable(false);
+                    try{
+                        pstmt2.setInt(1, n-i);
+                        pstmt2.setInt(2, n-i+1);
+                        pstmt2.executeUpdate();
+                        }
+                        catch(Exception e)
+                        {
+                            System.err.println(e);
+                        }
                     i++;
                     if (i > n) {
                         System.out.println("cancelled");
                         timer.cancel();
                         jTextField2.setText("Enter time");
                         jTextField2.setEditable(true);
-                        jToggleButton2.setText("ON");
+                        jToggleButton2.setText("Check");
                         jToggleButton2.setEnabled(true);
+                        try{
+                        pstmt2.setInt(1, 0);
+                        pstmt2.setInt(2, n);
+                        pstmt2.executeUpdate();
+                        }
+                        catch(Exception e)
+                        {
+                            System.err.println(e);
+                        }
                     }
                 }
             ;
@@ -406,9 +507,25 @@ public class Bground extends javax.swing.JFrame {
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         String str;
         int n;
+         int tl;
         try {
+            stmt.execute("select wm3 from timer;");
+            rs = stmt.getResultSet();
+            rs.next();
+            tl=rs.getInt("wm3");
+            if(tl==0){
+            jToggleButton3.setText("ON");
             str = jTextField3.getText();
             n = Integer.parseInt(str);
+            System.out.println(n);
+            pstmt3.setInt(1, n);
+            pstmt3.setInt(2, 0);
+            pstmt3.executeUpdate();
+            }
+            else{
+            n=tl;
+            System.out.println(n); 
+            }
             jToggleButton3.setText("Wait");
             jToggleButton3.setEnabled(false);
             Timer timer = new Timer();
@@ -419,14 +536,32 @@ public class Bground extends javax.swing.JFrame {
                     String st = Integer.toString(n - i) + " min left";
                     jTextField3.setText(st);
                     jTextField3.setEditable(false);
+                    try{
+                        pstmt3.setInt(1, n-i);
+                        pstmt3.setInt(2, n-i+1);
+                        pstmt3.executeUpdate();
+                        }
+                        catch(Exception e)
+                        {
+                            System.err.println(e);
+                        }
                     i++;
                     if (i > n) {
                         System.out.println("cancelled");
                         timer.cancel();
                         jTextField3.setText("Enter time");
                         jTextField3.setEditable(true);
-                        jToggleButton3.setText("ON");
+                        jToggleButton3.setText("Check");
                         jToggleButton3.setEnabled(true);
+                        try{
+                        pstmt3.setInt(1, 0);
+                        pstmt3.setInt(2, n);
+                        pstmt3.executeUpdate();
+                        }
+                        catch(Exception e)
+                        {
+                            System.err.println(e);
+                        }
                     }
                 }
             ;
@@ -446,10 +581,25 @@ public class Bground extends javax.swing.JFrame {
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
         String str;
         int n;
+        int tl;
         try {
-
+            stmt.execute("select wm4 from timer;");
+            rs = stmt.getResultSet();
+            rs.next();
+            tl=rs.getInt("wm4");
+            if(tl==0){
+            jToggleButton4.setText("ON");
             str = jTextField4.getText();
             n = Integer.parseInt(str);
+            System.out.println(n);
+            pstmt4.setInt(1, n);
+            pstmt4.setInt(2, 0);
+            pstmt4.executeUpdate();
+            }
+            else{
+            n=tl;
+            System.out.println(n); 
+            }
             jToggleButton4.setText("Wait");
             jToggleButton4.setEnabled(false);
             Timer timer = new Timer();
@@ -460,14 +610,32 @@ public class Bground extends javax.swing.JFrame {
                     String st = Integer.toString(n - i) + " min left";
                     jTextField4.setText(st);
                     jTextField4.setEditable(false);
+                    try{
+                        pstmt4.setInt(1, n-i);
+                        pstmt4.setInt(2, n-i+1);
+                        pstmt4.executeUpdate();
+                        }
+                        catch(Exception e)
+                        {
+                            System.err.println(e);
+                        }
                     i++;
                     if (i > n) {
                         System.out.println("cancelled");
                         timer.cancel();
                         jTextField4.setText("Enter time");
                         jTextField4.setEditable(true);
-                        jToggleButton4.setText("ON");
+                        jToggleButton4.setText("Check");
                         jToggleButton4.setEnabled(true);
+                        try{
+                        pstmt4.setInt(1, 0);
+                        pstmt4.setInt(2, n);
+                        pstmt4.executeUpdate();
+                        }
+                        catch(Exception e)
+                        {
+                            System.err.println(e);
+                        }
                     }
                 }
             ;
@@ -487,10 +655,25 @@ public class Bground extends javax.swing.JFrame {
     private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
         String str;
         int n;
+         int tl;
         try {
-
+            stmt.execute("select wm5 from timer;");
+            rs = stmt.getResultSet();
+            rs.next();
+            tl=rs.getInt("wm5");
+            if(tl==0){
+            jToggleButton5.setText("ON");
             str = jTextField5.getText();
             n = Integer.parseInt(str);
+            System.out.println(n);
+            pstmt5.setInt(1, n);
+            pstmt5.setInt(2, 0);
+            pstmt5.executeUpdate();
+            }
+            else{
+            n=tl;
+            System.out.println(n); 
+            }
             jToggleButton5.setText("Wait");
             jToggleButton5.setEnabled(false);
             Timer timer = new Timer();
@@ -501,14 +684,32 @@ public class Bground extends javax.swing.JFrame {
                     String st = Integer.toString(n - i) + " min left";
                     jTextField5.setText(st);
                     jTextField5.setEditable(false);
+                    try{
+                        pstmt5.setInt(1, n-i);
+                        pstmt5.setInt(2, n-i+1);
+                        pstmt5.executeUpdate();
+                        }
+                        catch(Exception e)
+                        {
+                            System.err.println(e);
+                        }
                     i++;
                     if (i > n) {
                         System.out.println("cancelled");
                         timer.cancel();
                         jTextField5.setText("Enter time");
                         jTextField5.setEditable(true);
-                        jToggleButton5.setText("ON");
+                        jToggleButton5.setText("Check");
                         jToggleButton5.setEnabled(true);
+                        try{
+                        pstmt5.setInt(1, 0);
+                        pstmt5.setInt(2, n);
+                        pstmt5.executeUpdate();
+                        }
+                        catch(Exception e)
+                        {
+                            System.err.println(e);
+                        }
                     }
                 }
             ;
@@ -528,10 +729,25 @@ public class Bground extends javax.swing.JFrame {
     private void jToggleButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton6ActionPerformed
         String str;
         int n;
+         int tl;
         try {
-
+            stmt.execute("select wm6 from timer;");
+            rs = stmt.getResultSet();
+            rs.next();
+            tl=rs.getInt("wm6");
+            if(tl==0){
+            jToggleButton6.setText("ON");
             str = jTextField6.getText();
             n = Integer.parseInt(str);
+            System.out.println(n);
+            pstmt6.setInt(1, n);
+            pstmt6.setInt(2, 0);
+            pstmt6.executeUpdate();
+            }
+            else{
+            n=tl;
+            System.out.println(n); 
+            }
             jToggleButton6.setText("Wait");
             jToggleButton6.setEnabled(false);
             Timer timer = new Timer();
@@ -542,14 +758,32 @@ public class Bground extends javax.swing.JFrame {
                     String st = Integer.toString(n - i) + " min left";
                     jTextField6.setText(st);
                     jTextField6.setEditable(false);
+                    try{
+                        pstmt6.setInt(1, n-i);
+                        pstmt6.setInt(2, n-i+1);
+                        pstmt6.executeUpdate();
+                        }
+                        catch(Exception e)
+                        {
+                            System.err.println(e);
+                        }
                     i++;
                     if (i > n) {
                         System.out.println("cancelled");
                         timer.cancel();
                         jTextField6.setText("Enter time");
                         jTextField6.setEditable(true);
-                        jToggleButton6.setText("ON");
+                        jToggleButton6.setText("Check");
                         jToggleButton6.setEnabled(true);
+                        try{
+                        pstmt6.setInt(1, 0);
+                        pstmt6.setInt(2, n);
+                        pstmt6.executeUpdate();
+                        }
+                        catch(Exception e)
+                        {
+                            System.err.println(e);
+                        }
                     }
                 }
             ;
@@ -573,10 +807,25 @@ public class Bground extends javax.swing.JFrame {
     private void jToggleButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton7ActionPerformed
         String str;
         int n;
+         int tl;
         try {
-
+            stmt.execute("select wm7 from timer;");
+            rs = stmt.getResultSet();
+            rs.next();
+            tl=rs.getInt("wm7");
+            if(tl==0){
+            jToggleButton7.setText("ON");
             str = jTextField7.getText();
             n = Integer.parseInt(str);
+            System.out.println(n);
+            pstmt7.setInt(1, n);
+            pstmt7.setInt(2, 0);
+            pstmt7.executeUpdate();
+            }
+            else{
+            n=tl;
+            System.out.println(n); 
+            }
             jToggleButton7.setText("Wait");
             jToggleButton7.setEnabled(false);
             Timer timer = new Timer();
@@ -587,14 +836,32 @@ public class Bground extends javax.swing.JFrame {
                     String st = Integer.toString(n - i) + " min left";
                     jTextField7.setText(st);
                     jTextField7.setEditable(false);
+                    try{
+                        pstmt7.setInt(1, n-i);
+                        pstmt7.setInt(2, n-i+1);
+                        pstmt7.executeUpdate();
+                        }
+                        catch(Exception e)
+                        {
+                            System.err.println(e);
+                        }
                     i++;
                     if (i > n) {
                         System.out.println("cancelled");
                         timer.cancel();
                         jTextField7.setText("Enter time");
                         jTextField7.setEditable(true);
-                        jToggleButton7.setText("ON");
+                        jToggleButton7.setText("Check");
                         jToggleButton7.setEnabled(true);
+                        try{
+                        pstmt7.setInt(1, 0);
+                        pstmt7.setInt(2, n);
+                        pstmt7.executeUpdate();
+                        }
+                        catch(Exception e)
+                        {
+                            System.err.println(e);
+                        }
                     }
                 }
             ;
@@ -610,10 +877,25 @@ public class Bground extends javax.swing.JFrame {
     private void jToggleButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton8ActionPerformed
         String str;
         int n;
+         int tl;
         try {
-
+            stmt.execute("select wm8 from timer;");
+            rs = stmt.getResultSet();
+            rs.next();
+            tl=rs.getInt("wm8");
+            if(tl==0){
+            jToggleButton8.setText("ON");
             str = jTextField8.getText();
             n = Integer.parseInt(str);
+            System.out.println(n);
+            pstmt8.setInt(1, n);
+            pstmt8.setInt(2, 0);
+            pstmt8.executeUpdate();
+            }
+            else{
+            n=tl;
+            System.out.println(n); 
+            }
             jToggleButton8.setText("Wait");
             jToggleButton8.setEnabled(false);
             Timer timer = new Timer();
@@ -624,14 +906,32 @@ public class Bground extends javax.swing.JFrame {
                     String st = Integer.toString(n - i) + " min left";
                     jTextField8.setText(st);
                     jTextField8.setEditable(false);
+                    try{
+                        pstmt8.setInt(1, n-i);
+                        pstmt8.setInt(2, n-i+1);
+                        pstmt8.executeUpdate();
+                        }
+                        catch(Exception e)
+                        {
+                            System.err.println(e);
+                        }
                     i++;
                     if (i > n) {
                         System.out.println("cancelled");
                         timer.cancel();
                         jTextField8.setText("Enter time");
                         jTextField8.setEditable(true);
-                        jToggleButton8.setText("ON");
+                        jToggleButton8.setText("Check");
                         jToggleButton8.setEnabled(true);
+                        try{
+                        pstmt8.setInt(1, 0);
+                        pstmt8.setInt(2, n);
+                        pstmt8.executeUpdate();
+                        }
+                        catch(Exception e)
+                        {
+                            System.err.println(e);
+                        }
                     }
                 }
             ;
