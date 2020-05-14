@@ -23,20 +23,28 @@ public class Bground extends javax.swing.JFrame {
         initComponents();
         jTextField1.setText("Enter time");
         jToggleButton1.setText("Check");
+        jTextField1.setEditable(false);
         jTextField2.setText("Enter time");
         jToggleButton2.setText("Check");
+        jTextField2.setEditable(false);
         jTextField3.setText("Enter time");
         jToggleButton3.setText("Check");
+        jTextField3.setEditable(false);
         jTextField4.setText("Enter time");
         jToggleButton4.setText("Check");
+        jTextField4.setEditable(false);
         jTextField5.setText("Enter time");
         jToggleButton5.setText("Check");
+        jTextField5.setEditable(false);
         jTextField6.setText("Enter time");
         jToggleButton6.setText("Check");
+        jTextField6.setEditable(false);
         jTextField7.setText("Enter time");
         jToggleButton7.setText("Check");
+        jTextField7.setEditable(false);
         jTextField8.setText("Enter time");
         jToggleButton8.setText("Check");
+        jTextField8.setEditable(false);
         Connection conn = null;
         try {
             String userName = "root";
@@ -359,6 +367,7 @@ public class Bground extends javax.swing.JFrame {
             rs.next();
             tl=rs.getInt("wm1");
             if(tl==0){
+            jTextField1.setEditable(true);
             jToggleButton1.setText("ON");
             str = jTextField1.getText();
             n = Integer.parseInt(str);
@@ -396,7 +405,7 @@ public class Bground extends javax.swing.JFrame {
                         System.out.println("cancelled");
                         timer.cancel();
                         jTextField1.setText("Enter time");
-                        jTextField1.setEditable(true);
+                        jTextField1.setEditable(false);
                         jToggleButton1.setText("Check");
                         jToggleButton1.setEnabled(true);
                         try{
@@ -439,6 +448,7 @@ public class Bground extends javax.swing.JFrame {
             rs.next();
             tl=rs.getInt("wm2");
             if(tl==0){
+                jTextField2.setEditable(true);
             jToggleButton2.setText("ON");
             str = jTextField2.getText();
             n = Integer.parseInt(str);
@@ -476,7 +486,7 @@ public class Bground extends javax.swing.JFrame {
                         System.out.println("cancelled");
                         timer.cancel();
                         jTextField2.setText("Enter time");
-                        jTextField2.setEditable(true);
+                        jTextField2.setEditable(false);
                         jToggleButton2.setText("Check");
                         jToggleButton2.setEnabled(true);
                         try{
@@ -514,6 +524,7 @@ public class Bground extends javax.swing.JFrame {
             rs.next();
             tl=rs.getInt("wm3");
             if(tl==0){
+                jTextField3.setEditable(true);
             jToggleButton3.setText("ON");
             str = jTextField3.getText();
             n = Integer.parseInt(str);
@@ -550,7 +561,7 @@ public class Bground extends javax.swing.JFrame {
                         System.out.println("cancelled");
                         timer.cancel();
                         jTextField3.setText("Enter time");
-                        jTextField3.setEditable(true);
+                        jTextField3.setEditable(false);
                         jToggleButton3.setText("Check");
                         jToggleButton3.setEnabled(true);
                         try{
@@ -588,6 +599,7 @@ public class Bground extends javax.swing.JFrame {
             rs.next();
             tl=rs.getInt("wm4");
             if(tl==0){
+                jTextField4.setEditable(true);
             jToggleButton4.setText("ON");
             str = jTextField4.getText();
             n = Integer.parseInt(str);
@@ -624,7 +636,7 @@ public class Bground extends javax.swing.JFrame {
                         System.out.println("cancelled");
                         timer.cancel();
                         jTextField4.setText("Enter time");
-                        jTextField4.setEditable(true);
+                        jTextField4.setEditable(false);
                         jToggleButton4.setText("Check");
                         jToggleButton4.setEnabled(true);
                         try{
@@ -662,6 +674,7 @@ public class Bground extends javax.swing.JFrame {
             rs.next();
             tl=rs.getInt("wm5");
             if(tl==0){
+                jTextField5.setEditable(true);
             jToggleButton5.setText("ON");
             str = jTextField5.getText();
             n = Integer.parseInt(str);
@@ -698,7 +711,7 @@ public class Bground extends javax.swing.JFrame {
                         System.out.println("cancelled");
                         timer.cancel();
                         jTextField5.setText("Enter time");
-                        jTextField5.setEditable(true);
+                        jTextField5.setEditable(false);
                         jToggleButton5.setText("Check");
                         jToggleButton5.setEnabled(true);
                         try{
@@ -736,6 +749,7 @@ public class Bground extends javax.swing.JFrame {
             rs.next();
             tl=rs.getInt("wm6");
             if(tl==0){
+                jTextField6.setEditable(true);
             jToggleButton6.setText("ON");
             str = jTextField6.getText();
             n = Integer.parseInt(str);
@@ -772,7 +786,7 @@ public class Bground extends javax.swing.JFrame {
                         System.out.println("cancelled");
                         timer.cancel();
                         jTextField6.setText("Enter time");
-                        jTextField6.setEditable(true);
+                        jTextField6.setEditable(false);
                         jToggleButton6.setText("Check");
                         jToggleButton6.setEnabled(true);
                         try{
@@ -814,6 +828,7 @@ public class Bground extends javax.swing.JFrame {
             rs.next();
             tl=rs.getInt("wm7");
             if(tl==0){
+                jTextField7.setEditable(true);
             jToggleButton7.setText("ON");
             str = jTextField7.getText();
             n = Integer.parseInt(str);
@@ -850,7 +865,7 @@ public class Bground extends javax.swing.JFrame {
                         System.out.println("cancelled");
                         timer.cancel();
                         jTextField7.setText("Enter time");
-                        jTextField7.setEditable(true);
+                        jTextField7.setEditable(false);
                         jToggleButton7.setText("Check");
                         jToggleButton7.setEnabled(true);
                         try{
@@ -884,6 +899,7 @@ public class Bground extends javax.swing.JFrame {
             rs.next();
             tl=rs.getInt("wm8");
             if(tl==0){
+                jTextField8.setEditable(true);
             jToggleButton8.setText("ON");
             str = jTextField8.getText();
             n = Integer.parseInt(str);
@@ -920,7 +936,7 @@ public class Bground extends javax.swing.JFrame {
                         System.out.println("cancelled");
                         timer.cancel();
                         jTextField8.setText("Enter time");
-                        jTextField8.setEditable(true);
+                        jTextField8.setEditable(false);
                         jToggleButton8.setText("Check");
                         jToggleButton8.setEnabled(true);
                         try{
