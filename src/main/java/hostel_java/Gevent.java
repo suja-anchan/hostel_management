@@ -15,30 +15,28 @@ public class Gevent {
     public Gevent() {
          JFrame frame= new JFrame("GIRLS HOSTEL");
        
-        frame.setSize(1300,1000);
+        frame.setSize(500,400);
         JPanel panel=new JPanel();  
         panel.setLayout(null);
         frame.add(panel);
         JButton button=new JButton("MESS");
-        button.setBounds(550,150,150,50);
+        button.setBounds(170,100,150,50);
         panel.add(button);
 
        
         
 
         JButton button2=new JButton("LAUNDRY");
-        button2.setBounds(550,250,150,50);
+        button2.setBounds(170,170,150,50);
         panel.add(button2);
         JButton button3=new JButton("STUDENT INFO");
-        button3.setBounds(550,350,150,50);
+        button3.setBounds(170,240,150,50);
         
         button3.addActionListener((ActionEvent e) -> {
-            new info();
-         }//             @Override
-//             public void actionPerformed(ActionEvent e) {
-//                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//           
-//             }
+             new info();
+             
+             
+         }
          );
         
         

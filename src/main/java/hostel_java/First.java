@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package hostel_java;
 
 import java.awt.*;
@@ -12,19 +8,20 @@ import javax.swing.*;
 
 
 public class First extends Frame {
-
+ 
   public First()
     {
-
+//setLocationRelativeTo(null);
+//setVisible(true);
     }  
  
 
     public static void main(String[] args){
         new First();
-        JFrame frame= new JFrame("Hostel Management System");
         
-        frame.setSize(1300,1000);
-        frame.setBackground(Color.BLACK);
+        JFrame frame= new JFrame("Hostel Management System");
+        frame.setSize(500,400);
+        
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //        frame.getContentPane().setBackground(Color.BLACK);
         JPanel panel=new JPanel();
@@ -32,14 +29,14 @@ public class First extends Frame {
         panel.setLayout(null);
         frame.add(panel);
         JButton button=new JButton("GIRLS HOSTEL");
-        button.setBounds(550,250,150,50);
+        button.setBounds(170,100,150,50);
         panel.add(button);
         frame.add(panel);
         frame.setVisible(true);
         button.addActionListener (new Action1());
         
         JButton button2=new JButton("BOYS HOSTEL");
-        button2.setBounds(550,350,150,50);
+        button2.setBounds(170,170,150,50);
         panel.add(button2);
         button2.addActionListener (new Action2());
         
