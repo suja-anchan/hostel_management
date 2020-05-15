@@ -1,20 +1,25 @@
 
 package hostel_java;
 
+import java.sql.Connection;
+import java.sql.*;
 
 
-/**
- *
- * @author hp
- */
+
+
+
+
 public class login extends javax.swing.JFrame {
 
     
     public login() {
-        
+      
         initComponents();
         
+                 
     }
+    
+    
 
  
     @SuppressWarnings("unchecked")
@@ -24,7 +29,7 @@ public class login extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         head = new javax.swing.JLabel();
         uname = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        Tuser = new javax.swing.JTextField();
         pswd = new javax.swing.JLabel();
         pin = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -33,6 +38,7 @@ public class login extends javax.swing.JFrame {
         Backbutton = new javax.swing.JButton();
         cpin = new javax.swing.JCheckBox();
         cpass = new javax.swing.JCheckBox();
+        Tmsg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,9 +46,9 @@ public class login extends javax.swing.JFrame {
 
         uname.setText("      USERNAME:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        Tuser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                TuserActionPerformed(evt);
             }
         });
 
@@ -60,6 +66,12 @@ public class login extends javax.swing.JFrame {
         Ppass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PpassActionPerformed(evt);
+            }
+        });
+
+        Ppin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PpinActionPerformed(evt);
             }
         });
 
@@ -99,7 +111,7 @@ public class login extends javax.swing.JFrame {
                             .addGap(88, 88, 88)
                             .addComponent(uname, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Tuser, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,8 +126,11 @@ public class login extends javax.swing.JFrame {
                                     .addComponent(cpass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(198, 198, 198)
-                        .addComponent(jButton1)))
-                .addContainerGap(163, Short.MAX_VALUE))
+                        .addComponent(jButton1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(Tmsg, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,7 +144,7 @@ public class login extends javax.swing.JFrame {
                         .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(uname)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Tuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pswd)
@@ -144,7 +159,9 @@ public class login extends javax.swing.JFrame {
                 .addComponent(cpin, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(Tmsg)
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -167,12 +184,63 @@ public class login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void TuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TuserActionPerformed
+      
         
-    }//GEN-LAST:event_jTextField1ActionPerformed
+        
+        
+    }//GEN-LAST:event_TuserActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        int isfound=1;
+       Statement stmt = null;
+
+        try
+       {
+        pass passkey = new pass();
+        String userName = "root";
+        String password = passkey.password;
+        String url = "jdbc:mysql://localhost:3306/Hostel_mngmnt";
+         Class.forName("com.mysql.cj.jdbc.Driver").getConstructor().newInstance();
+          
+        Connection conn = null;
+        conn = DriverManager.getConnection(url, userName, password);
+        
+        stmt=conn.createStatement();
+         ResultSet rs=stmt.executeQuery("select * from login,manager where pin="+Ppin.getText());
+        
+          System.out.println("Database connection established");
+            while(rs.next())
+            { 
+                if(Tuser.getText().equals(rs.getString(2)) 
+                       && 
+                   Ppass.getText().equals(rs.getString(3)) )
+  
+                {   
+                    isfound=0;
+                    
+                    break;
+                }
+                                
+                 
+            }
+            if(isfound==0)
+            {
+                Tmsg.setText("Login Successful");
+                //new admin_manage();
+//                JFrame f=new JFrame("hello");
+//               f.setSize(500,400);
+//               f.setVisible(true);
+                
+            }
+            else
+                Tmsg.setText("Invalid username and password");
+        
+       }
+       catch(Exception e)
+       {
+           System.err.println(e);
+       }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void BackbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackbuttonActionPerformed
@@ -204,6 +272,10 @@ public class login extends javax.swing.JFrame {
           }
       }
     }//GEN-LAST:event_cpinActionPerformed
+
+    private void PpinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PpinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PpinActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,12 +316,13 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JButton Backbutton;
     private javax.swing.JPasswordField Ppass;
     private javax.swing.JPasswordField Ppin;
+    private javax.swing.JLabel Tmsg;
+    private javax.swing.JTextField Tuser;
     private javax.swing.JCheckBox cpass;
     private javax.swing.JCheckBox cpin;
     private javax.swing.JLabel head;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel pin;
     private javax.swing.JLabel pswd;
     private javax.swing.JLabel uname;
