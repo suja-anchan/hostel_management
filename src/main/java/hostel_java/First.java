@@ -9,13 +9,13 @@ import javax.swing.*;
 
 public class First extends Frame {
  
- 
 public First(){
    
         
-        JFrame frame= new JFrame("Hostel Management System");
-        frame.setSize(500,400);
-        
+       
+       
+         JFrame frame= new JFrame("Hostel Management System");
+         frame.setSize(500,400);
 //        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //        frame.getContentPane().setBackground(Color.BLACK);
         JPanel panel=new JPanel();
@@ -34,10 +34,10 @@ public First(){
         panel.add(button2);
         button2.addActionListener (new Action2());
         
-        JButton back1=new JButton("Back");
-        back1.setBounds(10,10,100,30);
-        panel.add(back1);
-         button.addActionListener (new Action3());
+//        JButton back1=new JButton("Back");
+//        back1.setBounds(10,10,100,30);
+//        panel.add(back1);
+//         button.addActionListener (new Action3());
         
         
         
@@ -52,12 +52,13 @@ public First(){
      
         }
          
-    static class Action3 implements ActionListener{
-        public void actionPerformed (ActionEvent evt){
-           new Page1();
-        }
-     
-        }
+//    static class Action3 implements ActionListener{
+//        public void actionPerformed (ActionEvent evt){
+//             frame.setVisible(false);
+//           new Page1().setVisible(true);
+//        }
+//     
+//        }
     
     static class Action2 implements ActionListener{
         public void actionPerformed (ActionEvent ev){

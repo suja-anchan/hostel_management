@@ -47,7 +47,7 @@ public class Page1 extends Frame {
         }
     static class Action2 implements ActionListener{
         public void actionPerformed (ActionEvent ev){
-//            Bevent bevent = new Bevent();
+           new login().setVisible(true);
 
         }  
     }

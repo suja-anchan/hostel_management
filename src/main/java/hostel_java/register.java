@@ -14,7 +14,7 @@ public class register extends javax.swing.JFrame {
         PreparedStatement pst=null;
         Statement smt=null;
     public register() {
-          
+                  
         initComponents();
     }
 
@@ -243,10 +243,7 @@ public class register extends javax.swing.JFrame {
     private void BregsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BregsActionPerformed
       String passord = Ppsw.getText();
         System.out.println(passord);
-        if(passord.length() < 8){
-            JOptionPane.showMessageDialog(null, "Password must contain atleast 8 characters","Error",
-                JOptionPane.ERROR_MESSAGE);
-        }
+        
         try{ pass passkey = new pass();
             String userName = "root";
             String password = passkey.password;
@@ -264,11 +261,31 @@ public class register extends javax.swing.JFrame {
            if(rs.next()){
           String pin1=rs.getString("Pin");
           
-          if(pin1.equals(Ppin1.getText()) && Prepsw1.getText().equals(Ppsw.getText()))
+          if(!(pin1.equals(Ppin1.getText()))  )
+          {
+              JOptionPane.showMessageDialog(null, "Incorrect PIN","Error",
+                JOptionPane.ERROR_MESSAGE);
+          }
+          
+          else if(!(Prepsw1.getText().equals(Ppsw.getText())))
+          {
+            JOptionPane.showMessageDialog(null, "Incorrect Password","Error",
+                JOptionPane.ERROR_MESSAGE);   
+          }
+          
+          else if(passord.length() < 8){
+            JOptionPane.showMessageDialog(null, "Password must contain atleast 8 characters","Error",
+                JOptionPane.ERROR_MESSAGE);
+        }
+          
+          if(pin1.equals(Ppin1.getText()) && Prepsw1.getText().equals(Ppsw.getText()) && passord.length()>=8)
           {    pst.executeLargeUpdate();
-              System.out.println("registration successful");     
+              System.out.println("registration successful");
+              JOptionPane.showMessageDialog(null, "Registration successful","Success",
+                JOptionPane.PLAIN_MESSAGE);
+              this.dispose();
           } else {
-              JOptionPane.showMessageDialog(null, "Incorrect PIN or Re-entered password","Error",
+              JOptionPane.showMessageDialog(null, "Registration failed","fail",
                 JOptionPane.ERROR_MESSAGE);
                System.out.println("registration failed"); 
               
@@ -292,7 +309,8 @@ public class register extends javax.swing.JFrame {
                 new register().setVisible(true);
             }
         });
- }
+
+}
     /**
      * @param args the command line arguments
      */

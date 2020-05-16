@@ -72,7 +72,7 @@ public void showTableData()
 {
 
 frame1 = new JFrame("Student Data");
-frame1.setLayout(new BorderLayout()); 
+
 //TableModel tm = new TableModel();
 DefaultTableModel model = new DefaultTableModel();
 model.setColumnIdentifiers(columnNames);
