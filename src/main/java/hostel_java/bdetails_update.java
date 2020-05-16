@@ -23,8 +23,8 @@ Statement stmt = null;
             System.out.println("Database connection established");
             stmt = conn.createStatement();
             stmt.execute("use wm");
-            pstmt1 = conn.prepareStatement("delete from girls_hostel1 where usn=?");
-            pstmt2= conn.prepareStatement("insert into girls_hostel1 values(?,?,?,?,?,?,?)");
+            pstmt1 = conn.prepareStatement("delete from boys_hostel where usn=?");
+            pstmt2= conn.prepareStatement("insert into boys_hostel values(?,?,?,?,?,?,?)");
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -49,6 +49,7 @@ Statement stmt = null;
         jTextField8 = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -137,6 +138,9 @@ Statement stmt = null;
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel4.setText("Boys Hostel");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -171,14 +175,18 @@ Statement stmt = null;
                             .addComponent(jLabel3))
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(jButton4))))
+                            .addComponent(jButton4)
+                            .addGap(148, 148, 148)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(36, 158, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -333,6 +341,7 @@ Statement stmt = null;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
