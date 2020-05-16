@@ -34,6 +34,11 @@ public First(){
         panel.add(button2);
         button2.addActionListener (new Action2());
         
+        JButton back1=new JButton("Back");
+        back1.setBounds(10,10,100,30);
+        panel.add(back1);
+         button.addActionListener (new Action3());
+        
         
         
     }
@@ -46,6 +51,14 @@ public First(){
         }
      
         }
+         
+    static class Action3 implements ActionListener{
+        public void actionPerformed (ActionEvent evt){
+           new Page1();
+        }
+     
+        }
+    
     static class Action2 implements ActionListener{
         public void actionPerformed (ActionEvent ev){
             Bevent bevent = new Bevent();

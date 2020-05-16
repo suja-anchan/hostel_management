@@ -241,7 +241,13 @@ public class register extends javax.swing.JFrame {
     }//GEN-LAST:event_BbackActionPerformed
 
     private void BregsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BregsActionPerformed
-       try{ pass passkey = new pass();
+      String passord = Ppsw.getText();
+        System.out.println(passord);
+        if(passord.length() < 8){
+            JOptionPane.showMessageDialog(null, "Password must contain atleast 8 characters","Error",
+                JOptionPane.ERROR_MESSAGE);
+        }
+        try{ pass passkey = new pass();
             String userName = "root";
             String password = passkey.password;
             String url = "jdbc:mysql://localhost:3306/Hostel_mngmnt";
@@ -249,6 +255,7 @@ public class register extends javax.swing.JFrame {
              conn = DriverManager.getConnection(url, userName, password);
            String sql="insert into login (User_name,Password) values(?,?)";
            smt=conn.createStatement();
+           
            ResultSet rs=smt.executeQuery("select * from manager");
            System.out.println("rs statement");
            pst=conn.prepareStatement(sql);
@@ -275,7 +282,9 @@ public class register extends javax.swing.JFrame {
     }//GEN-LAST:event_BregsActionPerformed
 
     private void PpswActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PpswActionPerformed
- 
+       
+        
+        
     }//GEN-LAST:event_PpswActionPerformed
  public static void main(String args[]){
      java.awt.EventQueue.invokeLater(new Runnable() {
