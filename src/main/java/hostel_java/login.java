@@ -3,6 +3,7 @@ package hostel_java;
 
 import java.sql.Connection;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 
 
@@ -39,6 +40,8 @@ public class login extends javax.swing.JFrame {
         cpin = new javax.swing.JCheckBox();
         cpass = new javax.swing.JCheckBox();
         Tmsg = new javax.swing.JLabel();
+        Lmsg = new javax.swing.JLabel();
+        Breg = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,6 +99,15 @@ public class login extends javax.swing.JFrame {
             }
         });
 
+        Lmsg.setText("Are you a new admin?");
+
+        Breg.setText("Register here");
+        Breg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BregActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -129,7 +141,12 @@ public class login extends javax.swing.JFrame {
                         .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(101, 101, 101)
-                        .addComponent(Tmsg, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Tmsg, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Lmsg, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Breg, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(117, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -161,7 +178,11 @@ public class login extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(Tmsg)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addComponent(Lmsg)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Breg)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -184,98 +205,100 @@ public class login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TuserActionPerformed
-      
-        
-        
-        
-    }//GEN-LAST:event_TuserActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int isfound=1;
-       Statement stmt = null;
-
-        try
-       {
-        pass passkey = new pass();
-        String userName = "root";
-        String password = passkey.password;
-        String url = "jdbc:mysql://localhost:3306/Hostel_mngmnt";
-         Class.forName("com.mysql.cj.jdbc.Driver").getConstructor().newInstance();
-          
-        Connection conn = null;
-        conn = DriverManager.getConnection(url, userName, password);
-        
-        stmt=conn.createStatement();
-         ResultSet rs=stmt.executeQuery("select * from login,manager where pin="+Ppin.getText());
-        
-          System.out.println("Database connection established");
-            while(rs.next())
-            { 
-                if(Tuser.getText().equals(rs.getString(2)) 
-                       && 
-                   Ppass.getText().equals(rs.getString(3)) )
-  
-                {   
-                    isfound=0;
-                    
-                    break;
-                }
-                                
-                 
+    private void cpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpassActionPerformed
+        if (evt.getSource()==cpass){
+            if(cpass.isSelected()){
+                Ppass.setEchoChar((char)0);
             }
-            if(isfound==0)
-            {
-                Tmsg.setText("Login Successful");
-                //new admin_manage();
-//                JFrame f=new JFrame("hello");
-//               f.setSize(500,400);
-//               f.setVisible(true);
-                
+            else{
+                Ppass.setEchoChar('*');
             }
-            else
-                Tmsg.setText("Invalid username and password");
-        
-       }
-       catch(Exception e)
-       {
-           System.err.println(e);
-       }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        }
+    }//GEN-LAST:event_cpassActionPerformed
+
+    private void cpinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpinActionPerformed
+        if (evt.getSource()==cpin){
+            if(cpin.isSelected()){
+                Ppin.setEchoChar((char)0);
+            }
+            else{
+                Ppin.setEchoChar('*');
+            }
+        }
+    }//GEN-LAST:event_cpinActionPerformed
 
     private void BackbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackbuttonActionPerformed
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_BackbuttonActionPerformed
 
-    private void cpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpassActionPerformed
-      if (evt.getSource()==cpass){
-          if(cpass.isSelected()){
-              Ppass.setEchoChar((char)0);
-          }
-          else{
-              Ppass.setEchoChar('*');
-          }
-      }
-    }//GEN-LAST:event_cpassActionPerformed
+    private void PpinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PpinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PpinActionPerformed
 
     private void PpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PpassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PpassActionPerformed
 
-    private void cpinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpinActionPerformed
-         if (evt.getSource()==cpin){
-          if(cpin.isSelected()){
-              Ppin.setEchoChar((char)0);
-          }
-          else{
-              Ppin.setEchoChar('*');
-          }
-      }
-    }//GEN-LAST:event_cpinActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int isfound=1;
+        Statement stmt = null;
 
-    private void PpinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PpinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PpinActionPerformed
+        try
+        {
+            pass passkey = new pass();
+            String userName = "root";
+            String password = passkey.password;
+            String url = "jdbc:mysql://localhost:3306/Hostel_mngmnt";
+            Class.forName("com.mysql.cj.jdbc.Driver").getConstructor().newInstance();
+
+            Connection conn = null;
+            conn = DriverManager.getConnection(url, userName, password);
+
+            stmt=conn.createStatement();
+            ResultSet rs=stmt.executeQuery("select * from login,manager where pin="+Ppin.getText());
+
+            System.out.println("Database connection established");
+            while(rs.next())
+            {
+                if(Tuser.getText().equals(rs.getString(2))
+                    &&
+                    Ppass.getText().equals(rs.getString(3)) )
+
+                {
+                    isfound=0;
+
+                    break;
+                }
+
+            }
+            if(isfound==0)
+            {System.out.println("Login successful");
+              
+                //Tmsg.setText("Login Successful");
+                //new admin_manage();
+                //                JFrame f=new JFrame("hello");
+                //               f.setSize(500,400);
+                //               f.setVisible(true);
+
+            }
+            else
+            JOptionPane.showMessageDialog(null, "Invalid username and password","Error",
+                JOptionPane.ERROR_MESSAGE);
+
+        }
+        catch(Exception e)
+        {
+            System.err.println(e);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void TuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TuserActionPerformed
+
+    }//GEN-LAST:event_TuserActionPerformed
+
+    private void BregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BregActionPerformed
+ //register reg= new register();       
+    }//GEN-LAST:event_BregActionPerformed
 
     /**
      * @param args the command line arguments
@@ -314,6 +337,8 @@ public class login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Backbutton;
+    private javax.swing.JButton Breg;
+    private javax.swing.JLabel Lmsg;
     private javax.swing.JPasswordField Ppass;
     private javax.swing.JPasswordField Ppin;
     private javax.swing.JLabel Tmsg;
