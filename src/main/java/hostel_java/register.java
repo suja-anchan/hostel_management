@@ -43,7 +43,7 @@ public class register extends javax.swing.JFrame {
         cpin = new javax.swing.JCheckBox();
         Bback = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         Lmsg.setText("Admin Registration Form");
 
@@ -247,7 +247,7 @@ public class register extends javax.swing.JFrame {
         try{ pass passkey = new pass();
             String userName = "root";
             String password = passkey.password;
-            String url = "jdbc:mysql://localhost:3306/Hostel_mngmnt";
+            String url = "jdbc:mysql://localhost:3306/wm";
             Class.forName("com.mysql.cj.jdbc.Driver").getConstructor().newInstance();
              conn = DriverManager.getConnection(url, userName, password);
            String sql="insert into login (User_name,Password) values(?,?)";
@@ -284,6 +284,7 @@ public class register extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(null, "Registration successful","Success",
                 JOptionPane.PLAIN_MESSAGE);
               this.dispose();
+              new login().setVisible(true);
           } else {
               JOptionPane.showMessageDialog(null, "Registration failed","fail",
                 JOptionPane.ERROR_MESSAGE);

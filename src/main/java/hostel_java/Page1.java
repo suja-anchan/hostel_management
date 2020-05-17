@@ -18,8 +18,7 @@ public class Page1 extends Frame {
         JFrame frame= new JFrame("Hostel Management System");
         frame.setSize(500,400);
         
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.getContentPane().setBackground(Color.BLACK);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         JPanel panel=new JPanel();
         panel.setBackground(Color.LIGHT_GRAY);
         panel.setLayout(null);

@@ -22,13 +22,14 @@ Connection con=null;
 
 pass passkey=new pass();
 String driverName = "com.mysql.jdbc.Driver";
-String url = "jdbc:mysql://localhost:3306/hostel_mngmnt";
+String url = "jdbc:mysql://localhost:3306/wm";
 String userName = "root";
 String password = passkey.password;
 String[] columnNames = {"USN", "Room no","Block", "Name","Branch", "Phone no","State"};
 infoB()
 {
 frame = new JFrame("Student Info");
+frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 frame.setLayout(null);
 textbox = new JTextField();
 textbox.setBounds(150,30,150,20); 

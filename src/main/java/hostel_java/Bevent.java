@@ -29,9 +29,7 @@ public class Bevent {
         
         button3.addActionListener((ActionEvent e) -> {
              new infoB();
-             
-             
-         }
+          }
          );
         
         

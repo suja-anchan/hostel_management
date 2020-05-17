@@ -15,7 +15,7 @@ Connection con=null;
 
 pass passkey=new pass();
 String driverName = "com.mysql.jdbc.Driver";
-String url = "jdbc:mysql://localhost:3306/hostel_mngmnt";
+String url = "jdbc:mysql://localhost:3306/wm";
 String userName = "root";
 String password = passkey.password;
 String[] columnNames = {"USN", "Room no","Block", "Name","Branch", "Phone no","State"};

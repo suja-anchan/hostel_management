@@ -4,8 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-
-
 public class Gevent {
 
     public Gevent() {
@@ -30,12 +28,19 @@ public class Gevent {
         
         button3.addActionListener((ActionEvent e) -> {
              new info();
-             
-             
+  
          }
          );
-        
-        
+        button.addActionListener((ActionEvent e) -> {
+             new student().setVisible(true);
+  
+         }
+         );
+        button2.addActionListener((ActionEvent e) -> {
+            new Gground().setVisible(true);
+  
+         }
+         );
         
     
         panel.add(button3);
