@@ -50,7 +50,7 @@ public class AllInfo {
             Class.forName("com.mysql.cj.jdbc.Driver").getConstructor().newInstance();
             con = DriverManager.getConnection(url, userName, password);
 
-            String sql = "select * from girls_hostel1 ";
+            String sql = "select * from girls_hostel1 order by Name";
 
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
