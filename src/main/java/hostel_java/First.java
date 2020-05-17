@@ -11,7 +11,6 @@ public class First extends Frame {
         JFrame frame = new JFrame("Hostel Management System");
         frame.setSize(500, 400);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//        frame.getContentPane().setBackground(Color.BLACK);
         JPanel panel = new JPanel();
         panel.setBackground(Color.LIGHT_GRAY);
         panel.setLayout(null);
@@ -28,10 +27,6 @@ public class First extends Frame {
         panel.add(button2);
         button2.addActionListener(new Action2());
 
-//        JButton back1=new JButton("Back");
-//        back1.setBounds(10,10,100,30);
-//        panel.add(back1);
-//         button.addActionListener (new Action3());
     }
 
     static class Action1 implements ActionListener {
@@ -42,23 +37,11 @@ public class First extends Frame {
 
     }
 
-//    static class Action3 implements ActionListener{
-//        public void actionPerformed (ActionEvent evt){
-//             frame.setVisible(false);
-//           new Page1().setVisible(true);
-//        }
-//     
-//        }
     static class Action2 implements ActionListener {
 
         public void actionPerformed(ActionEvent ev) {
             Bevent bevent = new Bevent();
-//            JFrame frame3 = new JFrame("Clicked");
-//            frame3.setVisible(true);
-//            frame3.setSize(1300,1000);
-//            JLabel label2 = new JLabel("Boys Hostel");
-//            JPanel panel2=new JPanel();
-//            panel2.add(label2);
+
 //            
         }
     }
