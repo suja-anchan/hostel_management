@@ -98,7 +98,7 @@ public class Bground extends javax.swing.JFrame {
         jToggleButton8 = new javax.swing.JToggleButton();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTextField1.setText("Enter time");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {

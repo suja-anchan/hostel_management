@@ -21,6 +21,7 @@ String password = passkey.password;
 String[] columnNames = {"USN", "Room no","Block", "Name","Branch", "Phone no","State"};
     public AllInfo() {
  frame2 = new JFrame("Student Data");
+ frame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 frame2.setLayout(new BorderLayout()); 
 
 //TableModel tm = new TableModel();

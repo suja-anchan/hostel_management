@@ -73,6 +73,7 @@ public void showTableData()
 {
 
 frame1 = new JFrame("Student Data");
+frame1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 frame1.setLayout(new BorderLayout()); 
 //TableModel tm = new TableModel();
 DefaultTableModel model = new DefaultTableModel();

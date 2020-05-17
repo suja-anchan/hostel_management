@@ -8,7 +8,7 @@ public class Bevent {
 
     public Bevent() {
          JFrame frame= new JFrame("BOYS HOSTEL");
-       
+       frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(500,400);
         frame.setSize(500,400);
         JPanel panel=new JPanel();  
@@ -30,6 +30,16 @@ public class Bevent {
         button3.addActionListener((ActionEvent e) -> {
              new infoB();
           }
+         );
+         button.addActionListener((ActionEvent e) -> {
+             new student().setVisible(true);
+  
+         }
+         );
+        button2.addActionListener((ActionEvent e) -> {
+            new Bground().setVisible(true);
+  
+         }
          );
         
         

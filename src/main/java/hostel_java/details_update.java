@@ -51,7 +51,7 @@ Statement stmt = null;
         jButton4 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTextField1.setText("Enter student USN");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {

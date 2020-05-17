@@ -8,7 +8,7 @@ public class Gevent {
 
     public Gevent() {
          JFrame frame= new JFrame("GIRLS HOSTEL");
-       
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(500,400);
         JPanel panel=new JPanel();  
         panel.setLayout(null);
