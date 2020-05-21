@@ -22,7 +22,7 @@ public class info implements ActionListener {
 
     pass passkey = new pass();
     String driverName = "com.mysql.jdbc.Driver";
-    String url = "jdbc:mysql://localhost:3306/wm";
+    String url = "jdbc:mysql://localhost:3306/hostel_mngmnt";
     String userName = "root";
     String password = passkey.password;
     String[] columnNames = {"USN", "Room no", "Block", "Name", "Branch", "Phone no", "State"};
